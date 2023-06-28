@@ -1,0 +1,42 @@
+If you create a constructor method to build a DVD by title then create a constructor method to build a DVD by category. Does JAVA allow you to do this?
+==> No, because title and category are both of type string so a method that only uses title or category would have similar signature.
+
+Is JAVA a Pass by Value or a Pass by Reference programming language?
+	Java is always pass by value, because even though a variable might hold a reference to an object, that object 	reference is a value that represents the object’s location in memory. Object references are therefore passed 	by value
+
+
+Alternatively, to compare items in the cart, instead of using Comparator, we can use the 
+Comparable interface and override the compareTo()method. You can refer to the Java docs to see the 
+information of this interface. 
+Suppose we are taking this Comparable interface approach.
+
+What class should implement the Comparable interface?
+ 	-> Class Media
+In those classes, how should you implement the compareTo()method be to reflect the ordering that we 
+want?
+ 	-> Override compareTo() method such as :
+	public int compareTo(Media m) {
+        	return this.getTitle().compareTo(student.getTitle());
+    	} 
+	Collections.sort(listMedia);
+Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this 
+Comparable interface approach?
+	-> Of course we can, for example :
+	public int compareTo(Media m) {
+		if(this.getTitle().compareTo(m.getTitle() > 0){
+			return 1;
+		}
+		else if(this.getTitle().compareTo(m.getTitle() < 0){
+			return -1;
+		}
+		else{
+			if(this.getCost() >= m.getCost())
+				return 1;
+			else
+				return -1
+		}
+    	} 
+
+Suppose the DVDs has a different ordering rule from the other media types, that is by title, then decreasing 
+length, then cost. How would you modify your code to allow this?
+	-> We can use thenComparing of Comparator or use if else 
